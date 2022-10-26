@@ -1,41 +1,34 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
-    return (
-        <div className="navbar bg-blue-300">
-  <div className="flex-1">
-    <a className="btn btn-ghost normal-case text-xl">LearnIT</a>
-  </div>
-  <div className="flex-none text-xl font-semibold">
-  <ul className="menu menu-horizontal p-0">
-      <Link className='mr-3' to='/'>Home</Link>
-      <Link className='mr-3' to='/courses'>Courses</Link>
-      <Link className='mr-3' to='/blog'>Blog</Link>
-      <Link className='mr-3' to='/faq'>FAQ</Link>
-      <Link className='mr-3' to='/register'>Register</Link>
-      <Link className='mr-3' to='/login'>Login</Link>
-    </ul>
-    <div className="dropdown dropdown-end">
-      <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-        <div className="w-10 rounded-full">
-          <img src="https://placeimg.com/80/80/people" />
-        </div>
-      </label>
-      <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-        <li>
-          <a className="justify-between">
-            Profile
-            <span className="badge">New</span>
-          </a>
-        </li>
-        <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-    );
+  return (
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand href="#home">LearnIT</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+          <Link style={{ textDecoration: 'none', color: 'white' }} className='me-3' to='/'>Home</Link>
+          <Link style={{ textDecoration: 'none', color: 'white' }} className='me-3' to='/courses'>Courses</Link>
+          <Link style={{ textDecoration: 'none', color: 'white' }} className='me-3' to='/blog'>Blog</Link>
+          <Link style={{ textDecoration: 'none', color: 'white' }} className='me-3' to='/faq'>FAQ</Link>
+          <Link style={{ textDecoration: 'none', color: 'white' }} className='me-3' to='/register'>Register</Link>                      
+          <Link style={{ textDecoration: 'none', color: 'white' }} className='me-3' to='/login'>Login</Link>
+          </Nav>
+          <Nav>
+            <Nav.Link href="#deets">More deets</Nav.Link>
+            <Nav.Link eventKey={2} href="#memes">
+              Dank memes
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
 };
 
 export default Header;
