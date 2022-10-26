@@ -38,10 +38,11 @@ const CourseDetails = () => {
                         <p>{course.benifits}</p>
                     </div>
                     </Card.Text>
-                    <h4>Price: ${course.price}</h4>
+                    <div className='d-flex justify-content-between'>
+                     <h4>Price: ${course.price}</h4>
+                    <Button variant="dark"><Link  style={{ textDecoration: 'none',color: 'white'}} to='/getpremium'>Get Premium</Link></Button></div>
                 </Card.Body>
                 </Card>
-                <button variant><Link to='/getpremium'>Get Premium</Link></button>
                 </Col>
             </Row>
         </div>
