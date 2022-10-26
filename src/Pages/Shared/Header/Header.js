@@ -1,10 +1,26 @@
 import React from 'react';
+import { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
+import { ThemeContext } from '../../../Contexts/ThemeProvider/Theme';
+import "react-toggle/style.css" 
+import Toggle from 'react-toggle';
+import { Button, ToggleButton } from 'react-bootstrap';
+import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
+import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+
 
 const Header = () => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -16,14 +32,23 @@ const Header = () => {
           <Link style={{ textDecoration: 'none', color: 'white' }} className='me-3' to='/courses'>Courses</Link>
           <Link style={{ textDecoration: 'none', color: 'white' }} className='me-3' to='/blog'>Blog</Link>
           <Link style={{ textDecoration: 'none', color: 'white' }} className='me-3' to='/faq'>FAQ</Link>
-          <Link style={{ textDecoration: 'none', color: 'white' }} className='me-3' to='/register'>Register</Link>                      
-          <Link style={{ textDecoration: 'none', color: 'white' }} className='me-3' to='/login'>Login</Link>
+          <Button variant="light" onClick={handleLogOut}>Log out</Button>
           </Nav>
+
           <Nav>
-            <Nav.Link href="#deets">More deets</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
-              Dank memes
-            </Nav.Link>
+          <>
+          {
+            user?.uid ?
+            <>
+            <Button variant="light" onClick={handleLogOut}>Log out</Button>
+            </>
+            :
+            <>
+             <Link style={{ textDecoration: 'none', color: 'white' }} className='me-3' to='/login'>Login</Link>
+            <Link style={{ textDecoration: 'none', color: 'white' }} className='me-3' to='/register'>Register</Link>
+            </>
+          }
+          </>
           </Nav>
         </Navbar.Collapse>
       </Container>
