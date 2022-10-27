@@ -51,6 +51,9 @@ export const routes = createBrowserRouter([
                 element:<PrivateRoutes><GetPremiumAccess></GetPremiumAccess></PrivateRoutes>,
                 loader: ({params}) => fetch(`http://localhost:5000/getpremium/${params.id}`)
             },
+           
         ]
-    }
+       
+    },
+    {path:'*', element: <div>This route is not found</div>}
 ])

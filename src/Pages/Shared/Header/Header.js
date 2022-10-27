@@ -54,7 +54,7 @@ const Header = () => {
           <OverlayTrigger placement="bottom"
            overlay={<Tooltip id="button-tooltip-2">{user?.displayName}</Tooltip>}>
           <Link >
-            {user?.photoURL ?
+            {user?.photoURL?
              <Image
                 style={{ height: '30px' }}
                 roundedCircle

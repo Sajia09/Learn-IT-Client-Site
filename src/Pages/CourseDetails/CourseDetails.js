@@ -25,7 +25,7 @@ const CourseDetails = () => {
                     <LeftSideBar></LeftSideBar>
                 </Col>
                 <Col lg="8"  ref={ref}>
-                <Card style={{ width: '45rem' }}>
+                <Card>
                 <Card.Img variant="top" style={{ width: '100%',height: '300px'}} src={course.picture} />
                 <Card.Body>
                     <Card.Title>{course.course_name}</Card.Title>

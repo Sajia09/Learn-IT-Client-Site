@@ -48,9 +48,9 @@ const Register = () => {
             .catch(error => console.error(error));
     }
     return (
-        <div className='w-50'>
-            <h1>Registration Now</h1>
+        <div className='w-50 m-5'>
             <Container>
+            <h1>Registration Now</h1>
             <Form onSubmit={handleSubmit} >
             <Form.Group className="mb-3" controlId="formBasicName">
                 <Form.Label>Your Name</Form.Label>
@@ -69,16 +69,10 @@ const Register = () => {
                 <Form.Label>Password</Form.Label>
                 <Form.Control name="password" type="password" placeholder="Password" required />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check
-                    type="checkbox"
-                   
-                    label={<>Accept <Link to="/terms">Terms and conditions</Link></>} />
-            </Form.Group>
             <Form.Text >
               <p>Already have an account ? <Link to='/login'>Login</Link></p>
             </Form.Text>
-            <Button variant="dark" type="submit" >
+            <Button variant="dark" type="submit" className='mb-5' >
                 Register
             </Button>
             <Form.Text className="text-danger">

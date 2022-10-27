@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { FaGithub,FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
@@ -65,7 +66,7 @@ const Login = () => {
             })
     }
     return (
-        <div className='w-50'>
+        <div className='w-50 m-5'>
            <Container><h1>Login Now</h1>
             <Container>
             <Form onSubmit={handleSubmit}>
@@ -90,10 +91,10 @@ const Login = () => {
         </Form>
         <br />
         <Button onClick={handleGoogleSignIn} className='mb-3' variant="dark" type="submit" >
-               Google Login
+            <FaGoogle></FaGoogle>   Google Login
         </Button><br/>
         <Button onClick={handleGithubSignIn}  className='mb-3'  variant="dark" type="submit" >
-               Github Login
+             <FaGithub></FaGithub>  Github Login
         </Button>
         </Container></Container>
         </div>
