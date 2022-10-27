@@ -47,8 +47,9 @@ export const routes = createBrowserRouter([
                 element:<Register></Register>
             },
             {
-                path:'/getpremium',
-                element:<PrivateRoutes><GetPremiumAccess></GetPremiumAccess></PrivateRoutes>
+                path:'/getpremium/:id',
+                element:<PrivateRoutes><GetPremiumAccess></GetPremiumAccess></PrivateRoutes>,
+                loader: ({params}) => fetch(`http://localhost:5000/getpremium/${params.id}`)
             },
         ]
     }

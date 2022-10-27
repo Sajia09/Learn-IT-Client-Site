@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import { FaFileDownload } from 'react-icons/fa';
 import Card from 'react-bootstrap/Card';
 import LeftSideBar from '../Shared/LeftSideBar/LeftSideBar';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import Pdf from "react-to-pdf";
 import ReactDOM from "react-dom";
 import App from '../../App';
@@ -16,6 +16,7 @@ const CourseDetails = () => {
     const course = useLoaderData();
     return (
         <div>
+            <Container>
             <h2 className='text-center m-4'>Courses We Provide <Pdf targetRef={ref} filename="course-details.pdf">
             {({ toPdf }) => <FaFileDownload onClick={toPdf} size={30}>Generate Pdf</FaFileDownload>}
            </Pdf></h2>
@@ -40,11 +41,12 @@ const CourseDetails = () => {
                     </Card.Text>
                     <div className='d-flex justify-content-between'>
                      <h4>Price: ${course.price}</h4>
-                    <Button variant="dark"><Link  style={{ textDecoration: 'none',color: 'white'}} to='/getpremium'>Get Premium</Link></Button></div>
+                    <Button variant="dark"><Link  style={{ textDecoration: 'none',color: 'white'}} to={`/getpremium/${course._id}`}>Get Premium</Link></Button></div>
                 </Card.Body>
                 </Card>
                 </Col>
             </Row>
+            </Container>
         </div>
     );
 };

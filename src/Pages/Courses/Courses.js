@@ -11,6 +11,7 @@ const Courses = () => {
     const allCourses = useLoaderData();
     return (
         <div>
+            <Container>
             <h2 className='text-center m-4'>Courses We Provide </h2>
                 <Row>
                     <Col lg='4'>
@@ -27,6 +28,7 @@ const Courses = () => {
                     </div>
                     </Col>
                 </Row>
+            </Container>
         </div>
     );
 };
