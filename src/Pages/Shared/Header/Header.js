@@ -4,17 +4,14 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
-import { ThemeContext } from '../../../Contexts/ThemeProvider/Theme';
 import "react-toggle/style.css" 
-import Toggle from 'react-toggle';
 import { Button, Image, OverlayTrigger, ToggleButton, Tooltip } from 'react-bootstrap';
-import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 import { FaUser } from 'react-icons/fa';
+import { MDBSwitch } from 'mdb-react-ui-kit';
 
 
 const Header = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
   const { user, logOut } = useContext(AuthContext);
 
     const handleLogOut = () => {
@@ -53,7 +50,7 @@ const Header = () => {
           </>
           <OverlayTrigger placement="bottom"
            overlay={<Tooltip id="button-tooltip-2">{user?.displayName}</Tooltip>}>
-          <Link >
+          <Link className='me-2 pe-2'>
             {user?.photoURL?
              <Image
                 style={{ height: '30px' }}
@@ -64,6 +61,7 @@ const Header = () => {
             }
             </Link>
             </OverlayTrigger>
+            <MDBSwitch id='flexSwitchCheckChecked' label='' />
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -7,9 +7,9 @@ import Row from 'react-bootstrap/Row';
 
 const Blog = () => {
     return (
-        <div>
+        <div className='m-5 p-5'>
            <Container>
-           <h2>Question & Answers</h2>
+           <h2>Questions & Answers</h2>
            <Row xs={1} md={2} className="g-4 text-justify">
         <Col>
           <Card className='mb-5'>
