@@ -25,6 +25,7 @@ const Header = () => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
+        <Navbar.Brand href="#home"><img style={{ height: '40px' }} src="https://thumbs.dreamstime.com/b/earth-globe-icon-vector-icons-white-background-trendy-linear-website-print-logo-emblem-symbol-inter-interface-element-168199322.jpg" alt="" /></Navbar.Brand>
         <Navbar.Brand href="#home">LearnIT</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
