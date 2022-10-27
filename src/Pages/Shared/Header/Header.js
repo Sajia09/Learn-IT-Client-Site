@@ -7,9 +7,10 @@ import { Link } from 'react-router-dom';
 import { ThemeContext } from '../../../Contexts/ThemeProvider/Theme';
 import "react-toggle/style.css" 
 import Toggle from 'react-toggle';
-import { Button, ToggleButton } from 'react-bootstrap';
+import { Button, Image, OverlayTrigger, ToggleButton, Tooltip } from 'react-bootstrap';
 import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import { FaUser } from 'react-icons/fa';
 
 
 const Header = () => {
@@ -32,7 +33,6 @@ const Header = () => {
           <Link style={{ textDecoration: 'none', color: 'white' }} className='me-3' to='/courses'>Courses</Link>
           <Link style={{ textDecoration: 'none', color: 'white' }} className='me-3' to='/blog'>Blog</Link>
           <Link style={{ textDecoration: 'none', color: 'white' }} className='me-3' to='/faq'>FAQ</Link>
-          <Button variant="light" onClick={handleLogOut}>Log out</Button>
           </Nav>
 
           <Nav>
@@ -40,15 +40,29 @@ const Header = () => {
           {
             user?.uid ?
             <>
-            <Button variant="light" onClick={handleLogOut}>Log out</Button>
+            <Link onClick={handleLogOut} style={{ textDecoration: 'none', color: 'white' }} className='me-3'>Logout</Link>
             </>
             :
             <>
              <Link style={{ textDecoration: 'none', color: 'white' }} className='me-3' to='/login'>Login</Link>
-            <Link style={{ textDecoration: 'none', color: 'white' }} className='me-3' to='/register'>Register</Link>
+             <Link style={{ textDecoration: 'none', color: 'white' }} className='me-3' to='/register'>Register</Link>
+            
             </>
           }
           </>
+          <OverlayTrigger placement="bottom"
+           overlay={<Tooltip id="button-tooltip-2">{user?.displayName}</Tooltip>}>
+          <Link >
+            {user?.photoURL ?
+             <Image
+                style={{ height: '30px' }}
+                roundedCircle
+                src={user?.photoURL}>
+             </Image>
+            : <FaUser color='white'></FaUser>
+            }
+            </Link>
+            </OverlayTrigger>
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -2,14 +2,15 @@ import React, { useContext, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
 
     const [error, setError] = useState('');
-    const {createUser} = useContext(AuthContext);
+    const {createUser,updateUserProfile} = useContext(AuthContext);
+    const navigate = useNavigate();
     
     const handleSubmit = event => {
         event.preventDefault();
@@ -26,12 +27,25 @@ const Register = () => {
                 console.log(user);
                 setError('');
                 form.reset();
-                toast.success('Account created! Go to login page for login')
+                handleUpdateUserProfile(name,photoURL);
+                navigate('/');
+                toast.success('Account created!')
             })
             .catch(e => {
                 console.error(e);
                 setError(e.message);
             });
+    }
+
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(error => console.error(error));
     }
     return (
         <div className='w-50'>
