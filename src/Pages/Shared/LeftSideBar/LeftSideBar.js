@@ -8,7 +8,7 @@ const LeftSideBar = () => {
     const [courses, setCourses] = useState([]);
     console.log(courses);
     useEffect( () =>{
-        fetch('http://localhost:5000/courses')
+        fetch('https://assignment10-server-site.vercel.app/courses')
         .then( res => res.json())
         .then(data => setCourses(data));
     }, [])
